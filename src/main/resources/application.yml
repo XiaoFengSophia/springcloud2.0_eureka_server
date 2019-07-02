@@ -1,0 +1,28 @@
+###服务端口号
+server:
+  port: 8100
+###eureka 基本信息配置
+spring:
+  application: 
+    name: zxf-eureka-server
+eureka:
+  instance:
+    ###注册到eurekaip地址
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8200/eureka/   #将自己注册到8200中去
+###因为自己是为注册中心，不需要自己注册自己  集群模式下改为 ture
+    register-with-eureka: true
+###因为自己是为注册中心，不需要检索服务
+    fetch-registry: true
+
+#配置springBootAdmin     2019年06月06日
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
